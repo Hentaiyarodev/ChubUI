@@ -20,7 +20,7 @@ pointer-events: none;
 z-index: 0;
 }
 
-.sunny-viewport {
+.UI-viewport {
 width: 100%;
 min-height: 100vh;
 font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -33,7 +33,7 @@ align-items: center;
 justify-content: center;
 }
 
-.sunny-wrapper {
+.UI-wrapper {
 width: 100%;
 max-width: 900px;
 position: relative;
