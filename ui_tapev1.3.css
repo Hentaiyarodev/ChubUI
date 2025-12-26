@@ -118,7 +118,7 @@ header.ant-layout-header { z-index: 99999 !important; }
 display: none !important;
 }
 
-h3[class*="css-"] h3.ant-typography[class*="css-"]{
+h3[class*="css-"][class*="ant-typography"],h3.ant-typography[class*="css-"]{
 display: none !important;
 }
 
