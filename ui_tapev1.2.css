@@ -282,6 +282,22 @@ transition: all 0.1s ease !important;
 [class*="ant-btn-primary"] svg{filter:drop-shadow(0 0 10px var(--icon-glow))!important;}
 [class*="ant-btn-primary"]:hover svg{filter:drop-shadow(0 0 18px var(--icon-glow))!important;transform:rotate(5deg)!important;}
 
+[class*="ant-btn-variant-solid"]:not([class*="ant-btn-primary"]), .ant-btn-variant-solid:not(.ant-btn-primary){
+background: var(--content-bg)!important;
+border: 2px solid var(--tape-color)!important;
+color: var(--primary-color)!important;
+box-shadow: 0 0 10px rgba(255, 65, 54, 0.1), inset 0 0 5px rgba(255, 65, 54, 0.1)!important;
+border-radius: var(--border-radius)!important;
+}
+[class*="ant-btn-variant-outlined"],[class*="ant-btn-variant-dashed"],.ant-btn-variant-outlined,.ant-btn-variant-dashed{
+border: 1px solid var(--primary-color)!important;
+background: var(--tape-color)!important;
+backdrop-filter: blur(2px)!important;
+/* Shadow em vermelho sutil */
+box-shadow: 0 0 8px rgba(255, 65, 54, 0.2), inset 0 0 5px rgba(255, 65, 54, 0.1)!important;
+color: var(--primary-color)!important;
+border-radius: 4px !important;
+}
 [class*="ant-btn-color-default"],[class*="ant-btn-color-default"],.ant-btn-color-default{
 color:var(--primary-color)!important;
 text-shadow:0 0 var(--primary-color) 6px!important;
