@@ -1,0 +1,300 @@
+:root {
+    --accent: #4ECCA3;
+    --content-bg: rgba(10, 15, 30, 0.85);
+    --tape-color: rgba(120, 100, 200, 0.15);
+    --tag-width: 40px;
+    --tag-height: 40px;
+    --primary-color: #9575CD;
+    --secondary-color: #64B5F6;
+    --fantasy-gold: #FFD700;
+    --fantasy-silver: #C0C0C0;
+    --mystic-purple: #9C27B0;
+}
+
+body { 
+    background: linear-gradient(135deg, #0c1a2d 0%, #1a1a2e 50%, #16213e 100%) !important; 
+    margin: 0; 
+    font-family: 'Cinzel', 'MedievalSharp', Georgia, serif !important;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(100, 181, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(156, 39, 176, 0.08) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C27B0' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.UI-viewport {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    color: #e6e6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: 
+        radial-gradient(ellipse at top, rgba(149, 117, 205, 0.1) 0%, transparent 70%),
+        radial-gradient(ellipse at bottom, rgba(100, 181, 246, 0.08) 0%, transparent 70%);
+}
+
+.UI-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+    z-index: 1;
+}
+
+.textured-box {
+    background: var(--content-bg);
+    position: relative;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(149, 117, 205, 0.3);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.box-inner-texture {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background-image: 
+        radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    mix-blend-mode: overlay;
+}
+
+.tape-piece {
+    position: absolute;
+    background: linear-gradient(135deg, var(--fantasy-gold) 0%, var(--fantasy-silver) 100%);
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+    clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+    width: 60px;
+    height: 15px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.personality-tag {
+    position: relative; 
+    background: rgba(78, 204, 163, 0.15); 
+    border: 1.5px solid var(--accent); 
+    padding: 8px 20px;
+    display: inline-block;
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.personality-tag span {
+    color: var(--accent); 
+    font-weight: 700; 
+    font-size: 12px; 
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 10px rgba(78, 204, 163, 0.3);
+}
+
+.scenarios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Botões com tema de fantasia */
+button.ant-btn:has(.anticon-star) {
+    background: none !important; 
+    border: none !important;
+    box-shadow: none !important; 
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate;
+    border-radius: 8px !important; 
+    transition: all 0.3s ease-in-out;
+}
+
+button.ant-btn:has(.anticon-star)::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: 1; 
+    background: linear-gradient(45deg, 
+        var(--fantasy-gold) 0%,
+        var(--fantasy-silver) 25%,
+        var(--mystic-purple) 50%,
+        var(--accent) 75%,
+        var(--fantasy-gold) 100%);
+    border-radius: 10px; 
+    animation: spinBorder 4s linear infinite; 
+}
+
+@keyframes spinBorder {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+button.ant-btn:has(.anticon-star)::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important; 
+    z-index: 2; 
+    transition: background 0.3s ease;
+}
+
+/* Botões primários com tema de fantasia */
+[class*="ant-btn-primary"], .ant-btn-primary {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;     
+    padding: 12px 32px !important;
+    font-size: 1.1rem !important;
+    min-height: 48px !important;
+    position: relative !important;
+    border-radius: 8px !important; 
+    overflow: hidden !important;
+    z-index: 2;
+    font-family: 'Cinzel', serif !important;
+    font-weight: 600 !important;
+}
+
+[class*="ant-btn-primary"]::before, .ant-btn-primary::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: 1;
+    background: linear-gradient(45deg, 
+        var(--fantasy-gold) 0%,
+        var(--accent) 25%,
+        var(--mystic-purple) 50%,
+        var(--secondary-color) 75%,
+        var(--fantasy-gold) 100%);
+    border-radius: 10px; 
+    animation: gradientShift 3s ease infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+[class*="ant-btn-primary"]::after, .ant-btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--mystic-purple) 100%) !important;
+    z-index: 2; 
+    transition: all 0.3s ease;
+}
+
+[class*="ant-btn-primary"]:hover::after, .ant-btn-primary:hover::after {
+    background: linear-gradient(135deg, var(--mystic-purple) 0%, var(--primary-color) 100%) !important;
+    transform: scale(1.02);
+}
+
+[class*="ant-btn-primary"]:hover, .ant-btn-primary:hover {
+    box-shadow: 
+        0 0 20px rgba(149, 117, 205, 0.6),
+        0 0 40px rgba(100, 181, 246, 0.4) !important;
+}
+
+/* Tags com tema de fantasia */
+[class*="ant-tag"][class*="ant-tag-error"], .ant-tag.ant-tag-error {
+    color: transparent !important;
+    background: linear-gradient(135deg, var(--primary-color), var(--mystic-purple)) !important;
+    background-size: cover !important;
+    border: none !important;
+    width: var(--tag-width) !important;
+    height: var(--tag-height) !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    margin: 4px;
+    box-shadow: 0 4px 15px rgba(149, 117, 205, 0.3);
+}
+
+[class*="ant-tag"]:not([class*="ant-tag-error"]), .ant-tag:not(.ant-tag-error) {
+    position: relative; 
+    background: rgba(78, 204, 163, 0.15); 
+    border: 2px solid var(--accent); 
+    padding: 8px 20px;
+    display: inline-block;
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    color: var(--accent); 
+    font-weight: 600; 
+    font-size: 12px; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 4px;
+    transition: all 0.2s ease-in-out;
+    font-family: 'MedievalSharp', cursive;
+}
+
+/* Inputs com tema de fantasia */
+.ant-input, .ant-input-affix-wrapper, .ant-input-number-input, .ant-input-number {
+    border: 2px solid rgba(149, 117, 205, 0.4) !important;
+    background: rgba(10, 15, 30, 0.7) !important;
+    color: #e6e6ff !important;
+    border-radius: 6px !important;
+    box-shadow: 
+        inset 0 2px 4px rgba(0,0,0,0.3),
+        0 0 10px rgba(149, 117, 205, 0.1);
+    font-family: 'Cinzel', serif;
+}
+
+.ant-input:focus, .ant-input-affix-wrapper:focus-within {
+    border-color: var(--accent) !important;
+    box-shadow: 
+        inset 0 2px 4px rgba(0,0,0,0.3),
+        0 0 15px rgba(78, 204, 163, 0.5) !important;
+}
+
+/* Animações de fantasia */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 10px var(--accent); }
+    50% { box-shadow: 0 0 25px var(--accent); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .scenarios-grid { grid-template-columns: 1fr !important; }
+    .UI-viewport { padding: 20px 15px; }
+    .personality-tag { padding: 6px 15px; font-size: 10px; }
+}
