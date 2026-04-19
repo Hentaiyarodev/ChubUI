@@ -1,0 +1,123 @@
+/*©2026 Hentaiyaro - Noir Tape Edition*/
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Special+Elite&display=swap');
+
+:root {
+    --accent: #d4af37; /* Dourado/Latão */
+    --secondary-accent: #8b0000; /* Vermelho Sangue Noir */
+    --content-bg: rgba(15, 15, 15, 0.95);
+    --tape-color: rgba(212, 175, 55, 0.15); /* Fita Dourada Translúcida */
+    --primary-color: #d4af37;
+    --font-noir: 'Special Elite', monospace;
+    --font-title: 'Abril Fatface', serif;
+}
+
+body { background: #000 !important; margin: 0; font-family: var(--font-noir) !important; }
+body, .ant-layout, .ant-layout-content { background: transparent !important; }
+
+/* Background com Filtro Noir */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100vh;
+    background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, #000 100%), 
+                url('https://files.catbox.moe/0jumv6.png') center center/cover no-repeat;
+    filter: grayscale(100%) brightness(40%) contrast(120%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.UI-viewport {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    padding: 60px 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.UI-wrapper { width: 100%; max-width: 900px; z-index: 1; }
+
+/* Caixas com Textura de Papel/Dossiê */
+.textured-box {
+    background: var(--content-bg);
+    position: relative;
+    border: 1px solid #222;
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.8);
+    backdrop-filter: blur(8px);
+}
+
+.box-inner-texture {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+}
+
+/* Fitas Adesivas Estilo Latão */
+.tape-piece {
+    position: absolute;
+    background: var(--tape-color);
+    backdrop-filter: blur(2px);
+    z-index: 2;
+    pointer-events: none;
+    clip-path: polygon(2% 0%, 98% 3%, 100% 95%, 95% 100%, 5% 97%, 0% 10%);
+    width: 60px;
+    height: 25px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+/* Polaroids de Cena de Crime */
+.polaroid {
+    background: #f0f0f0;
+    padding: 8px 8px 24px;
+    box-shadow: 5px 10px 20px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+    filter: sepia(0.3) contrast(1.1);
+}
+.polaroid:hover { transform: scale(1.05) rotate(0deg) !important; z-index: 10; filter: sepia(0); }
+
+/* Personality Tags */
+.personality-tag {
+    position: relative; 
+    background: rgba(212, 175, 55, 0.1); 
+    border: 1px solid var(--accent); 
+    padding: 6px 16px;
+    display: inline-block;
+    color: var(--accent);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    box-shadow: 3px 3px 0px #000;
+}
+
+/* Scrollbar Noir */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: var(--accent); }
+
+/* --- Overrides do Janitor AI --- */
+.ant-layout-footer, .no-vertical-anything *, div#chara-list, h3.ant-typography { display: none !important; }
+
+/* Botão Follow/Favorite (Spin Gold Animation) */
+button.ant-btn:has(.anticon-star) {
+    background: none !important; border: none !important; isolation: isolate;
+}
+button.ant-btn:has(.anticon-star)::before {
+    content: ''; position: absolute; inset: -4px; z-index: 1;
+    background: conic-gradient(transparent 0%, #d4af37 15%, #8b0000 30%, #d4af37 50%, transparent 70%);
+    border-radius: 9999px; animation: spinBorder 3s linear infinite;
+}
+button.ant-btn:has(.anticon-star)::after {
+    content: ''; position: absolute; inset: 1px; border-radius: 9999px;
+    background: #000 !important; z-index: 2;
+}
+@keyframes spinBorder { to { transform: rotate(360deg); } }
+
+/* Tags de Género (Replacement) */
+[class*="ant-tag"][class*="ant-tag-error"] {
+    background-image: url('https://files.catbox.moe/ue8c4q.gif') !important;
+    background-size: cover; width: 40px; height: 40px; border: none !important; color: transparent !important;
+}
