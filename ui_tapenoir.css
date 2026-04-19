@@ -1,0 +1,77 @@
+:root {
+        --accent: #d4af37; /* Dourado/Latão */
+        --content-bg: rgba(15, 15, 15, 0.95);
+        --tape-color: rgba(194, 178, 128, 0.3); /* Fita crepe envelhecida */
+        --primary-color: #d4af37;
+        --text-noir: #f0f0f0;
+    }
+
+    /* Background com filtro Noir do Midnight Lounge */
+    body::before {
+        background: linear-gradient(180deg, rgba(0,0,0,0.4) 0, rgba(0,0,0,0.7) 100%), 
+                    url('https://files.catbox.moe/x75qgk.png') center center/cover no-repeat !important;
+        filter: grayscale(100%) brightness(40%) contrast(110%) !important;
+    }
+
+    /* Sobrescrita para o estilo Noir Typewriter */
+    .UI-viewport { font-family: 'Special Elite', typewriter, serif !important; }
+    
+    .textured-box {
+        border: 1px solid #333;
+        box-shadow: 10px 10px 0px rgba(0,0,0,0.5) !important;
+    }
+
+    .personality-tag {
+        background: rgba(20, 20, 20, 0.8) !important;
+        border: 1px solid var(--accent) !important;
+        border-radius: 0px !important;
+    }
+    
+    .personality-tag span { color: var(--accent) !important; }
+
+    /* Efeito Polaroid nas imagens */
+    .polaroid-frame {
+        background: #f0f0f0 !important;
+        padding: 8px 8px 24px 8px !important; /* Espaço maior em baixo como Polaroid */
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.8) !important;
+        border-radius: 2px !important;
+    }
+
+/* Giro para a direita nos cards de cenário ao passar o rato */
+.scenario-card {
+    transition: all 0.4s ease-in-out !important;
+}
+
+.scenario-card:hover {
+    transform: translateY(-5px) rotate(2deg) !important; /* Giro para a direita */
+    box-shadow: 15px 15px 0px rgba(139, 0, 0, 0.2) !important;
+    border-color: var(--accent) !important;
+}
+
+/* Botão Favorito (Estrela) Noir */
+button.ant-btn:has(.anticon-star)::before {
+    background: conic-gradient(transparent 0%, #d4af37 15%, #8b0000 30%, #d4af37 50%, transparent 70%) !important;
+}
+
+button.ant-btn:has(.anticon-star)::after {
+    background: #000 !important;
+}
+
+/* Botão Chat (Primary) Noir */
+[class*="ant-btn-primary"]::after, .ant-btn-primary::after {
+    background: linear-gradient(135deg, #d4af37 0%, #8b0000 100%) !important;
+}
+
+[class*="ant-btn-primary"]:hover, .ant-btn-primary:hover {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4) !important;
+}
+
+/* Scrollbar Noir */
+::-webkit-scrollbar-thumb { background: var(--accent) !important; }
+::-webkit-scrollbar-track { background: #000 !important; }
+
+/* Tag NSFW do Janitor adaptada ao Noir */
+[class*="ant-tag"][class*="ant-tag-error"], .ant-tag.ant-tag-error {
+    background-image: url('https://files.catbox.moe/sf9s9h.gif') !important; /* O GIF vintage que usamos no perfil */
+    filter: sepia(1) hue-rotate(-15deg) saturate(1.5) !important;
+}
