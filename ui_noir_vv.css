@@ -1,0 +1,283 @@
+:root {
+    --accent: #d4af37; /* Brass / Gold */
+    --content-bg: rgba(17, 17, 17, 0.95); /* Noir dark box */
+    --tape-color: #1a1a1a; /* Fita preta de arquivo */
+    --tag-width: 40px;
+    --tag-height: 40px;
+    --primary-color: #d4af37; 
+    --secondary-color: #8b0000; /* Dark Blood Red */
+}
+
+body { background: transparent !important; margin: 0; }
+body, .ant-layout, .ant-layout-content { background: transparent !important; }
+
+/* Overlay de textura Carbon Fiber */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.UI-viewport {
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'Special Elite', typewriter, monospace;
+    position: relative;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.UI-wrapper {
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Caixa de texto simulando arquivos de detetive */
+.textured-box {
+    background: var(--content-bg);
+    border: 1px solid #333;
+    position: relative;
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.9);
+}
+
+.box-inner-texture {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    box-shadow: inset 0 1px 1px rgba(212, 175, 55, 0.05);
+}
+
+/* Fita adesiva agora parece fita preta isoladora de documentos */
+.tape-piece {
+    position: absolute;
+    background: var(--tape-color);
+    border: 1px solid #000;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+    z-index: 2;
+    pointer-events: none;
+    clip-path: polygon(2% 0%, 98% 3%, 100% 95%, 95% 100%, 5% 97%, 0% 10%);
+    width: 50px;
+    height: 15px;
+    opacity: 0.9;
+}
+
+/* Tags de Personalidade - Noir Style */
+.personality-tag {
+    position: relative; 
+    background: #111; 
+    border: 1px solid #333;
+    border-bottom: 2px solid var(--accent);
+    padding: 6px 16px;
+    display: inline-block;
+    box-shadow: 3px 3px 0px rgba(0,0,0,0.8);
+}
+
+.personality-tag span {
+    color: var(--accent); 
+    font-weight: bold; 
+    font-size: 11px; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Special Elite', monospace;
+}
+
+.scenarios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.scenarios-grid > *:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .main-grid { flex-direction: column !important; align-items: center; text-align: center; }
+    .personality-container { justify-content: center; margin-bottom: 30px; }
+    .gallery-container { transform: scale(0.8); margin-bottom: 30px; }
+    .scenarios-grid { grid-template-columns: 1fr !important; }
+}
+
+/* Ocultar elementos do Layout Janitor/Chub */
+.ant-layout-footer,
+.ant-ribbon.ant-ribbon-placement-end,
+.no-vertical-anything *,
+div#chara-list {
+    display: none !important;
+}
+
+.ant-layout-header,
+.ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child.no-padding.ml-0.pl-0.mr-2,
+.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-dark {
+    background-color: transparent !important;
+}
+
+header.ant-layout-header { z-index: 99999 !important; }
+
+/* Esconder textos desnecessários base */
+[class*="dGosgH"] p, strong, p[class*="dGosgH"],
+h3[class*="css-"][class*="ant-typography"], h3.ant-typography[class*="css-"] {
+    display: none !important;
+}
+
+/* ==============================================
+   OVERRIDE DOS BOTÕES CHUB/JANITOR (NOIR THEME)
+   ============================================== */
+
+@keyframes goldPulse {
+    0% { box-shadow: 0 0 5px rgba(212, 175, 55, 0.4); transform: scale(1); }
+    50% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.8), 0 0 25px rgba(139, 0, 0, 0.5); transform: scale(1.02); }
+    100% { box-shadow: 0 0 5px rgba(212, 175, 55, 0.4); transform: scale(1); }
+}
+
+/* Botão de Estrela (Favoritar) - Parece um crachá de detetive / moeda de ouro */
+button.ant-btn:has(.anticon-star) {
+    background: linear-gradient(135deg, #d4af37 0%, #aa8529 100%) !important; 
+    border: 2px solid #fff !important;
+    border-radius: 50% !important; 
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.9) !important;
+}
+
+button.ant-btn:has(.anticon-star) svg {
+    color: #000 !important;
+    filter: drop-shadow(0 0 2px rgba(255,255,255,0.5));
+}
+
+button.ant-btn:has(.anticon-star):hover {
+    animation: goldPulse 1.5s infinite;
+}
+
+button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
+    position: fixed !important; right: 24px !important; bottom: 24px !important;
+    z-index: 2147483647 !important;
+}
+
+button.ant-btn:has(.anticon-star svg path[d*="zM"]),
+button.ant-btn.ant-btn-icon-only:has(.anticon-star svg path[d*="zM"]) {
+    height: 52px !important; width: auto !important; 
+    padding: 8px 15px !important; border-radius: 4px !important;
+}
+
+button.ant-btn:has(.anticon-star) span {
+    color: #000 !important; font-weight: 900 !important;
+}
+
+/* Botões Principais (Chat, etc) */
+[class*="ant-btn-primary"], .ant-btn-primary {
+    background: #111 !important;
+    border: 1px solid var(--accent) !important;
+    color: var(--accent) !important;
+    box-shadow: 4px 4px 0px #000 !important;     
+    padding: 15px 40px !important;
+    font-size: 1.1rem !important;
+    min-height: 50px !important;
+    border-radius: 2px !important; 
+    font-family: 'Special Elite', monospace !important;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+[class*="ant-btn-primary"]:hover, .ant-btn-primary:hover {
+    background: var(--accent) !important;
+    color: #000 !important;
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0px var(--secondary-color) !important;
+}
+
+[class*="ant-btn-primary"] svg { filter: drop-shadow(0 0 2px #000) !important; }
+
+/* Botões Secundários */
+[class*="ant-btn-variant-solid"]:not([class*="ant-btn-primary"]), .ant-btn-variant-solid:not(.ant-btn-primary){
+    background: #222 !important;
+    border: 1px solid #444 !important;
+    color: var(--accent) !important;
+    border-radius: 2px !important;
+}
+
+[class*="ant-btn-variant-outlined"], [class*="ant-btn-variant-dashed"], .ant-btn-variant-outlined, .ant-btn-variant-dashed {
+    border: 1px dashed #555 !important;
+    background: rgba(0,0,0,0.5) !important;
+    color: #aaa !important;
+    border-radius: 2px !important;
+}
+
+[class*="ant-btn-color-default"], .ant-btn-color-default {
+    color: var(--accent) !important;
+    background: transparent !important;
+    border: 1px solid #333 !important;
+    border-radius: 2px !important;
+}
+
+/* Tag de Erro/NSFW - Usando o GIF da página principal */
+[class*="ant-tag"][class*="ant-tag-error"], .ant-tag.ant-tag-error {
+    color: transparent !important;
+    background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbm90eWc5dW91NG82MjJpM3Y4cm9qNTU4ZjdkcDV4MGdrYmRzd3hubiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/pSS0GqISqT0BDeYWjm/giphy.gif') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    width: var(--tag-width) !important;
+    height: var(--tag-height) !important;
+    border: none !important;
+    background-color: transparent !important; 
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 4px;
+}
+
+/* Tags Padrão do Janitor */
+[class*="ant-tag"]:not([class*="ant-tag-error"]), .ant-tag:not(.ant-tag-error) {
+    background: #111 !important; 
+    border: 1px solid #333 !important; 
+    padding: 6px 16px;
+    border-radius: 2px;
+    color: #888 !important; 
+    font-family: 'Special Elite', monospace;
+    text-transform: uppercase;
+    margin: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+[class*="ant-tag"]:not([class*="ant-tag-error"]):hover, .ant-tag:not(.ant-tag-error):hover {
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+}
+
+/* Inputs / Caixas de Texto */
+[class*="ant-select-outlined"]:not([class*="ant-select-customize-input"]) [class*="ant-select-selector"] {
+    border: 1px solid #444 !important;
+    background: #111 !important;
+    color: var(--accent) !important;
+    border-radius: 2px; 
+}
+
+.ant-input, .ant-input-affix-wrapper, .ant-input-number-input, .ant-input-number {
+    border: 1px solid #333 !important;
+    background: #0a0a0a !important;
+    color: #f0f0f0 !important;
+    border-radius: 2px !important;
+}
+
+.ant-input:focus, .ant-input-affix-wrapper:focus-within, .ant-input:hover, .ant-input-affix-wrapper:hover {
+    border-color: var(--accent) !important;
+    box-shadow: none !important;
+}
+
+[class*="ant-col"][class*="text-left"], .ant-col.text-left { padding: 0 !important; }
+[class*="ant-layout-header"], .ant-layout-header { background-color: transparent !important; }
+[class*="ant-menu-overflow-item"], .ant-menu-overflow-item.ant-menu-item { background-color: transparent !important; }
