@@ -1,0 +1,150 @@
+/* Midnight Lounge x Tape UI v1.4 */
+:root {
+    --accent: #d4af37; /* Brass/Gold */
+    --accent-red: #8b0000;
+    --content-bg: #111111;
+    --tape-color: rgba(212, 175, 55, 0.25);
+    --font-main: 'Special Elite', monospace;
+    --font-title: 'Abril Fatface', serif;
+}
+
+body { background: #000 !important; }
+
+/* Filtro da Imagem de Fundo do Personagem */
+body::before {
+    background: linear-gradient(180deg, rgba(0,0,0,0.2) 0, rgba(0,0,0,0.6) 100%), 
+                url('https://files.catbox.moe/0jumv6.png') center center/cover no-repeat !important;
+    filter: grayscale(100%) brightness(35%) contrast(120%) !important;
+    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1;
+}
+
+.UI-viewport { width: 100%; min-height: 100vh; font-family: var(--font-main); padding: 40px 20px; display: flex; justify-content: center; color: #eee; }
+.UI-wrapper { width: 100%; max-width: 900px; }
+
+/* Galeria Polaroid */
+.polaroid-evidence {
+    background: #e0e0e0;
+    padding: 10px 10px 30px 10px;
+    box-shadow: 10px 10px 25px rgba(0,0,0,0.8);
+    position: relative;
+    border: 1px solid #ccc;
+}
+.polaroid-evidence .photo {
+    width: 120px; height: 130px;
+    background-size: cover;
+    background-position: center;
+    filter: sepia(0.5) contrast(1.2) grayscale(0.2);
+}
+
+/* Tipografia Character */
+.char-name-noir {
+    font-family: var(--font-title);
+    font-size: clamp(60px, 10vw, 90px);
+    color: var(--accent);
+    text-shadow: 3px 3px 0px #000, 6px 6px 15px rgba(212,175,55,0.3);
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.file-status-tag {
+    background: var(--accent-red);
+    color: #fff;
+    display: inline-block;
+    padding: 4px 15px;
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transform: rotate(-1deg);
+    box-shadow: 4px 4px 0px #000;
+}
+
+/* Tags de Personalidade */
+.personality-tag-noir {
+    position: relative;
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid var(--accent);
+    padding: 8px 18px;
+    color: var(--accent);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 5px 5px 0px #000;
+}
+.tape-piece-mini {
+    position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
+    width: 30px; height: 10px; background: var(--tape-color);
+}
+
+/* Caixas de Texto (Manila Folder Style) */
+.case-description-box {
+    background: #c2b280; /* Cor de pasta manila */
+    color: #1a1a1a;
+    padding: 35px;
+    position: relative;
+    box-shadow: 15px 15px 0px rgba(0,0,0,0.5);
+    margin-bottom: 50px;
+}
+.folder-tab {
+    position: absolute; top: -25px; left: 0;
+    background: #c2b280;
+    padding: 5px 20px;
+    font-weight: bold;
+    border-radius: 10px 10px 0 0;
+    text-decoration: underline;
+}
+.typewriter-text { line-height: 1.6; font-size: 15px; position: relative; z-index: 1; }
+
+/* Grelha de Cenários */
+.ledger-header {
+    background: #111;
+    border: 1px solid #333;
+    color: var(--accent);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    position: relative;
+}
+.scenarios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+.scenario-card {
+    background: #0a0a0a;
+    border: 1px solid #222;
+    padding: 25px;
+    position: relative;
+    transition: 0.3s;
+}
+.scenario-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px) rotate(2deg); /* Giro para a direita */
+    box-shadow: 10px 10px 0px rgba(139, 0, 0, 0.4);
+}
+.scenario-id { color: var(--accent-red); font-weight: bold; font-size: 10px; margin-bottom: 5px; }
+.scenario-card h3 { font-family: var(--font-title); color: var(--accent); font-size: 16px; margin: 0 0 10px 0; border-bottom: 1px solid #333; }
+.scenario-card p { font-size: 12px; color: #888; margin: 0; line-height: 1.4; }
+
+/* Fita Adesiva Clássica */
+.tape-piece {
+    position: absolute;
+    background: var(--tape-color);
+    backdrop-filter: blur(1px);
+    width: 60px; height: 25px;
+    clip-path: polygon(5% 0%, 95% 2%, 100% 90%, 90% 100%, 10% 95%, 0% 15%);
+}
+
+.box-inner-texture {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .scenarios-grid { grid-template-columns: 1fr; }
+    .gallery-container { flex-wrap: wrap; }
+}
+
+/* Esconder elementos nativos do Chub */
+.ant-layout-footer, .ant-ribbon, #chara-list, .ant-layout-header { display: none !important; }
