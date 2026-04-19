@@ -1,0 +1,308 @@
+:root {
+    --accent: #d4af37; /* Gold */
+    --content-bg: #111111; /* Dark Background */
+    --tape-color: #d2c091; /* Masking Tape / Manila Color */
+    --primary-color: #8b0000; /* Dark Blood Red */
+    --border-color: #333333;
+    --tag-width: 40px;
+    --tag-height: 40px;
+}
+
+body { background: #050505 !important; margin: 0; }
+body, .ant-layout, .ant-layout-content { background: transparent !important; }
+
+/* BACKGROUND FIXO COM FILTRO VINTAGE (Ligado ao Lobby Noir) */
+body::before {
+    content: "" !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-image: url('https://files.catbox.moe/x75qgk.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    filter: grayscale(100%) brightness(25%) contrast(120%) !important;
+    z-index: -2 !important;
+    pointer-events: none !important;
+}
+
+.UI-viewport {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.UI-wrapper {
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+}
+
+/* NOIR BOXES (Substitui as Textured Boxes) */
+.textured-box {
+    background: rgba(17, 17, 17, 0.95);
+    border: 1px solid #333;
+    border-bottom: 3px solid var(--border-color);
+    position: relative;
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.8);
+    transition: all 0.3s ease;
+}
+
+.box-inner-texture {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+}
+
+/* FITA-COLA DE PAPEL (Vintage Masking Tape) */
+.tape-piece {
+    position: absolute;
+    background: var(--tape-color);
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    z-index: 1;
+    pointer-events: none;
+    clip-path: polygon(2% 0%, 98% 3%, 100% 95%, 95% 100%, 5% 97%, 0% 10%);
+    width: 45px;
+    height: 18px;
+    opacity: 0.85;
+}
+
+/* FOTOS ESTILO POLAROID ARQUIVO */
+.polaroid-photo {
+    background: #e3ddc8; /* Vintage paper color */
+    padding: 6px 6px 22px; 
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.9); 
+    position: relative;
+    border: 1px solid #bbb;
+}
+
+/* CARIMBO CONFIDENCIAL */
+.stamp-confidential {
+    position: absolute;
+    color: rgba(139, 0, 0, 0.6);
+    border: 2px solid rgba(139, 0, 0, 0.6);
+    font-family: 'Special Elite', monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 2px 10px;
+    transform: rotate(15deg);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* TAGS DE PERSONALIDADE */
+.personality-tag {
+    position: relative; 
+    background: #111; 
+    border: 1px solid var(--accent); 
+    padding: 6px 16px;
+    display: inline-block;
+}
+
+.personality-tag span {
+    color: var(--accent); 
+    font-family: 'Special Elite', monospace;
+    font-weight: bold; 
+    font-size: 11px; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.scenarios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.scenario-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .main-grid { flex-direction: column !important; align-items: center; text-align: center; }
+    .personality-container { justify-content: center; margin-bottom: 30px; }
+    .gallery-container { transform: scale(0.8); margin-bottom: 30px; }
+    .scenarios-grid { grid-template-columns: 1fr !important; }
+    .author-note-container { width: 100% !important; max-width: none !important; transform: rotate(0deg) !important; margin-left: 0 !important; }
+    .author-note-container p { text-align: left !important; }
+}
+
+/* OCULTAR ELEMENTOS DO CHUB */
+.ant-layout-footer, .ant-ribbon.ant-ribbon-placement-end, .no-vertical-anything *, div#chara-list { display: none !important; }
+.ant-layout-header, .ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child.no-padding.ml-0.pl-0.mr-2, .ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-dark { background-color: rgb(0, 0, 0, 0) !important; }
+header.ant-layout-header { z-index: 99999 !important; }
+[class*="dGosgH"] p, strong, p[class*="dGosgH"] { display: none !important; }
+h3[class*="css-"][class*="ant-typography"], h3.ant-typography[class*="css-"] { display: none !important; }
+
+/* =========================================================
+   OVERRIDE DE BOTÕES (Noir Theme) - Substitui o Arco-íris
+   ========================================================= */
+
+@keyframes noirPulse {
+    0% { box-shadow: 0 0 5px rgba(212, 175, 55, 0.2); }
+    50% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.6), 0 0 20px rgba(139, 0, 0, 0.4); }
+    100% { box-shadow: 0 0 5px rgba(212, 175, 55, 0.2); }
+}
+
+/* Botão Flutuante Estrela/Ação */
+button.ant-btn:has(.anticon-star) {
+    background: #111 !important; 
+    border: 1px solid var(--accent) !important;
+    box-shadow: 2px 2px 0px #000 !important; 
+    position: relative !important;
+    border-radius: 2px !important; 
+    transition: all 0.3s ease-in-out;
+}
+
+button.ant-btn:has(.anticon-star) svg {
+    color: var(--accent) !important;
+    filter: drop-shadow(0 0 2px #000);
+}
+
+button.ant-btn:has(.anticon-star):hover {
+    background: var(--accent) !important;
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0px var(--primary-color) !important;
+}
+
+button.ant-btn:has(.anticon-star):hover svg, button.ant-btn:has(.anticon-star):hover span {
+    color: #000 !important;
+}
+
+button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
+    position: fixed !important; right: 24px !important; bottom: 24px !important;
+    z-index: 2147483647 !important;
+}
+
+/* =========================================================
+   BOTÃO PRINCIPAL DE CHAT (Primary Button)
+   ========================================================= */
+[class*="ant-btn-primary"], .ant-btn-primary {
+    background: #151515 !important;
+    border: 1px solid var(--accent) !important;
+    box-shadow: 4px 4px 0px #000 !important;     
+    padding: 20px 40px !important;
+    font-size: 1.2rem !important;
+    font-family: 'Special Elite', monospace !important;
+    text-transform: uppercase;
+    min-height: 50px !important;
+    position: relative !important;
+    border-radius: 2px !important; 
+    overflow: hidden !important;
+    color: var(--accent) !important;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+[class*="ant-btn-primary"] span, [class*="ant-btn-primary"] svg, .ant-btn-primary span, .ant-btn-primary svg {
+    position: relative;
+    z-index: 3;
+}
+
+[class*="ant-btn-primary"]:hover, .ant-btn-primary:hover {
+    background: var(--primary-color) !important;
+    color: #fff !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 6px 6px 0px #000 !important;
+    transform: translateY(-2px);
+}
+
+[class*="ant-btn-primary"]:active,.ant-btn-primary:active {
+    transform: translateY(2px) !important;
+    box-shadow: 0 0 0 #000 !important;
+}
+
+/* OUTROS BOTÕES */
+[class*="ant-btn-variant-solid"]:not([class*="ant-btn-primary"]), .ant-btn-variant-solid:not(.ant-btn-primary) {
+    background: var(--content-bg)!important;
+    border: 1px solid #444 !important;
+    color: #aaa !important;
+    border-radius: 2px !important;
+}
+
+[class*="ant-btn-variant-outlined"],[class*="ant-btn-variant-dashed"],.ant-btn-variant-outlined,.ant-btn-variant-dashed{
+    border: 1px dashed #555 !important;
+    background: #111 !important;
+    color: #888 !important;
+    border-radius: 2px !important;
+}
+
+[class*="ant-btn-color-default"],[class*="ant-btn-color-default"],.ant-btn-color-default{
+    color: var(--accent) !important;
+    background: #111 !important;
+    border: 1px solid #333 !important;
+    border-radius: 2px !important;
+}
+
+/* =========================================================
+   TAGS E INPUTS (OVERRIDE)
+   ========================================================= */
+
+/* TAG NSFW - Adaptada para o Noir */
+[class*="ant-tag"][class*="ant-tag-error"],.ant-tag.ant-tag-error{
+    color: transparent !important;
+    background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbm90eWc5dW91NG82MjJpM3Y4cm9qNTU4ZjdkcDV4MGdrYmRzd3hubiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/pSS0GqISqT0BDeYWjm/giphy.gif') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    width: var(--tag-width) !important;
+    height: var(--tag-height) !important;
+    border: 1px solid var(--primary-color) !important;
+    background-color: #000 !important; 
+    padding: 0 !important;
+    margin: 4px;
+    border-radius: 2px !important;
+}
+
+[class*="ant-tag"]:not([class*="ant-tag-error"]),.ant-tag:not(.ant-tag-error){
+    background: #151515; 
+    border: 1px solid #444; 
+    padding: 6px 12px;
+    display: inline-block;
+    border-radius: 2px;
+    color: #888; 
+    font-family: 'Special Elite', monospace;
+    font-size: 11px; 
+    text-transform: uppercase;
+    margin: 4px;
+    transition: all 0.2s ease;
+}
+
+[class*="ant-select-outlined"]:not([class*="ant-select-customize-input"]) [class*="ant-select-selector"]{
+    border: 1px solid #444 !important;
+    background: #111 !important;
+    color: var(--accent) !important;
+    border-radius: 2px; 
+}
+
+.ant-input, .ant-input-affix-wrapper, .ant-input-number-input, .ant-input-number {
+    border: 1px solid #333 !important;
+    background: #111 !important;
+    color: #fff !important;
+    border-radius: 2px !important;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.8);
+}
+
+.ant-input:focus, .ant-input-affix-wrapper:focus-within, .ant-input:hover, .ant-input-affix-wrapper:hover {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.2) !important;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 2px; }
